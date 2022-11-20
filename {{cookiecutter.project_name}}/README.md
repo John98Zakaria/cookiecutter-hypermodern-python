@@ -1,71 +1,87 @@
 # {{ cookiecutter.friendly_name }}
 
-[![PyPI](https://img.shields.io/pypi/v/{{cookiecutter.project_name}}.svg)][pypi status]
-[![Status](https://img.shields.io/pypi/status/{{cookiecutter.project_name}}.svg)][pypi status]
-[![Python Version](https://img.shields.io/pypi/pyversions/{{cookiecutter.project_name}})][pypi status]
-[![License](https://img.shields.io/pypi/l/{{cookiecutter.project_name}})][license]
+<!-- badges-begin -->
 
-[![Read the documentation at https://{{cookiecutter.project_name}}.readthedocs.io/](https://img.shields.io/readthedocs/{{cookiecutter.project_name}}/latest.svg?label=Read%20the%20Docs)][read the docs]
-[![Tests](https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/workflows/Tests/badge.svg)][tests]
-[![Codecov](https://codecov.io/gh/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/branch/main/graph/badge.svg)][codecov]
+[![Black codestyle][black badge]][black project]
+[![Conventional commits][conventional badge]][Conventional commits]
+[![pre-commit enabled][pre-commit badge]][pre-commit project]
 
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
-[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
+[black badge]: https://img.shields.io/badge/code%20style-black-000000.svg
 
-[pypi status]: https://pypi.org/project/{{cookiecutter.project_name}}/
-[read the docs]: https://{{cookiecutter.project_name}}.readthedocs.io/
-[tests]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/actions?workflow=Tests
-[codecov]: https://app.codecov.io/gh/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}
-[pre-commit]: https://github.com/pre-commit/pre-commit
-[black]: https://github.com/psf/black
+[black project]: https://github.com/psf/black
 
-## Features
+[pre-commit badge]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
 
-- TODO
+[pre-commit project]: https://pre-commit.com/
 
-## Requirements
+[python version badge]: https://img.shields.io/pypi/pyversions/cookiecutter-hypermodern-python-instance
 
-- TODO
+[readthedocs badge]: https://img.shields.io/readthedocs/cookiecutter-hypermodern-python/latest.svg?label=Read%20the%20Docs
 
-## Installation
+[readthedocs page]: https://cookiecutter-hypermodern-python.readthedocs.io/
 
-You can install _{{cookiecutter.friendly_name}}_ via [pip] from [PyPI]:
+[status badge]: https://badgen.net/badge/status/alpha/d8624d
+
+[conventional badge]: docs/assets/general/conventional-commits.png
+
+[Conventional commits]: https://www.conventionalcommits.org/en/v1.0.0/
+
+<!-- badges-end -->
+
+# How to install the project
+
+Just pip install . at the root of this project
 
 ```console
 $ pip install {{cookiecutter.project_name}}
 ```
 
-## Usage
+# How to develop
 
-Please see the [Command-line Reference] for details.
+Install a python version of your choice using the official installer or conda.\
+[Download](https://python-poetry.org/docs/master/#installing-with-the-official-installer) and install poetry.
 
-## Contributing
+Add poetry to path, the default path on Windows is %APPDATA%\pypoetry\venv\Scripts.
+If you are currently using an IDE, restart it.
 
-Contributions are very welcome.
-To learn more, see the [Contributor Guide].
+Afterwards, run in cmd
+
+```commandline
+poetry install
+poetry shell
+git init && git add . && git commit -m "feat: Initial Commit"
+pre-commit install --hook-type commit-msg
+```
+
+To install the pre-commit hooks correctly you need to a commit locally to fetch the linting tools.
+
+
+## Adding new packages to the project
+
+Install new packages with `poetry add <package-name>` \
+install new dev packages with `poetry add -G dev <package-name>`
+
+# Writing good commit messages
+
+To prevent commit messages from becoming useless, this repository uses
+conventional commits to keep commit messages useful.
+
+Read about the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) standard and use it to write your
+commit messages.
+
+You can also use commitizen to write commits
+
+type in `cz c` to generate your commit message interactively.
+
+# Documentation
+
+To generate the documentation run `poetry run task docs-regen` or `python docs/generate_ref_pages.py && git add docs` \
+To run the documentation run `poetry run task docs-serve` or `mkdocs serve`
+
+Try it out and read the getting started section :)
 
 ## License
 
-Distributed under the terms of the [{{cookiecutter.license.replace("-", " ")}} license][license],
-_{{cookiecutter.friendly_name}}_ is free and open source software.
+Distributed under the terms of the {{cookiecutter.license.replace("-", " ")}} license
 
-## Issues
 
-If you encounter any problems,
-please [file an issue] along with a detailed description.
-
-## Credits
-
-This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter] template.
-
-[@cjolowicz]: https://github.com/cjolowicz
-[pypi]: https://pypi.org/
-[hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
-[file an issue]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/issues
-[pip]: https://pip.pypa.io/
-
-<!-- github-only -->
-
-[license]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/blob/main/LICENSE
-[contributor guide]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/blob/main/CONTRIBUTING.md
-[command-line reference]: https://{{cookiecutter.project_name}}.readthedocs.io/en/latest/usage.html
